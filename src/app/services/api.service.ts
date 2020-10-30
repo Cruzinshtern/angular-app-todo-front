@@ -37,13 +37,19 @@ export class ApiService {
     return this.http.post(this.usersURL, user);
   }
 
-  deleteTodo(todo) {
-    const endPoints = `/${todo.id}`;
-    this.http.delete(this.todosURL + endPoints).subscribe(
-      data => {
-        console.log(data);
-      });
-  }
+  // deleteTodo(todo) {
+  //   const endPoints = `/${todo.id}`;
+  //   this.http.delete(this.todosURL + endPoints).subscribe(
+  //     data => {
+  //       window.location.reload();
+  //       console.log(data);
+  //     });
+  // }
+  //
 
+  deleteTodo(todo): Observable<any> {
+      const endPoints = `/${todo.id}`;
+      return this.http.delete(this.todosURL + endPoints);
+  }
 
 }

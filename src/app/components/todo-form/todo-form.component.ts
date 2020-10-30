@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../../services/api.service';
 import {Todo} from '../../classes/Todo';
 import { v4 as uuidv4 } from 'uuid';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-todo-form',
@@ -16,7 +17,7 @@ export class TodoFormComponent implements OnInit {
   todoArr = [];
 
 
-  constructor(private http: HttpClient, private api: ApiService) { }
+  constructor(private http: HttpClient, private api: ApiService, private router: Router) { }
 
   ngOnInit(): void {
     // this.api.postData().subscribe(
@@ -36,6 +37,7 @@ export class TodoFormComponent implements OnInit {
       data => {
         this.todoArr = data;
         console.log(data);
+        this.router.navigate(['todolist']);
       }
     );
     e.target.reset();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
 import {HttpClient} from '@angular/common/http';
 import {ApiService} from '../../services/api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -14,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   password: string;
   userArr = [];
 
-  constructor(private http: HttpClient, private api: ApiService) { }
+  constructor(private http: HttpClient, private api: ApiService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +32,7 @@ export class RegistrationComponent implements OnInit {
       data => {
         this.userArr = data;
         console.log(data);
+        this.router.navigate(['']);
       }
     );
     e.target.reset();

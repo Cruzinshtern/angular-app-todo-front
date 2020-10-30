@@ -15,14 +15,21 @@ export class TodoItemComponent implements OnInit {
 
   constructor(private http: HttpClient, private api: ApiService) { }
 
-  deletedTodos = [];
-
   ngOnInit(): void {
+
   }
 
-  onDelete(todo) {
-    this.api.deleteTodo(todo);
+  // onDelete(todo) {
+  //   this.api.deleteTodo(todo);
+  // }
 
+  onDelete(todo) {
+    this.api.deleteTodo(this.todo).subscribe(
+      data => {
+        window.location.reload();
+        alert(data.status);
+      }
+    )
   }
 
 }

@@ -1,5 +1,9 @@
+<p>In order to get all the functionality of the website, please login</p>
 <form (ngSubmit)="onLogin($event)" class="login">
+  <h3>Login form</h3>
   <input type="text" name="name" [(ngModel)]="name" placeholder="Enter your username..">
   <input type="text" name="password" [(ngModel)]="password" placeholder="Enter your password..">
-  <button type="submit">OK</button>
+  <button type="submit">Login</button>
 </form>
+<p>If you haven't registered yet, proceed to <a routerLink="/registration">Registration page</a></p>
+
