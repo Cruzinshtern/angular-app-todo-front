@@ -1,0 +1,6 @@
+<form (ngSubmit)="onSubmit($event)" class="registration">
+  <input type="text" name="name" [(ngModel)]="name" placeholder="User name...">
+  <input type="email" name="email" [(ngModel)]="email" placeholder="User email...">
+  <input type="text" name="password" [(ngModel)]="password" placeholder="User password...">
+  <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Grandstander:ital,wght@1,300&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(to bottom, #ccccff 0%, #0066ff 100%) no-repeat;
+  height: 100vh;
+}
