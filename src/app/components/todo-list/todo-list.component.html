@@ -1,9 +1,13 @@
-<div class="todoList_component">
-<!--  <app-todo-form (addTodo)="addTodo($event)"></app-todo-form>-->
-  <app-todo-item
-    *ngFor="let todo of todos"
-    [todo] = "todo"
-  >
-<!--    (deleteTodo)="deleteTodo($event)"-->
-  </app-todo-item>
+<div class="todo_list_component">
+<div class="table_header">
+  <h3>MY TODOS</h3>
 </div>
+<app-todo-item
+  *ngFor="let todo of todos"
+  [todo] = "todo"
+></app-todo-item>
+  <h2>Click <a routerLink="/form">here</a> to add new todo</h2>
+</div>
+<app-todo-edit-modal></app-todo-edit-modal>
+
+

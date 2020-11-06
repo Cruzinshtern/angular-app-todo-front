@@ -1,9 +1,13 @@
 <p>In order to get all the functionality of the website, please login</p>
-<form (ngSubmit)="onLogin($event)" class="login">
-  <h3>Login form</h3>
-  <input type="text" name="name" [(ngModel)]="name" placeholder="Enter your username..">
-  <input type="text" name="password" [(ngModel)]="password" placeholder="Enter your password..">
-  <button type="submit">Login</button>
+<form [formGroup]="form" (ngSubmit)="onLogin()" class="login">
+  <h3>Login Form</h3>
+    <label>
+      Enter your username:
+      <input type="text" formControlName="name">
+    </label>
+    <label>
+      Enter your password:
+      <input type="password" formControlName="password">
+    </label>
+  <button [disabled]="!form.valid" type="submit">Submit</button>
 </form>
-<p>If you haven't registered yet, proceed to <a routerLink="/registration">Registration page</a></p>
-

@@ -28,3 +28,12 @@
 .navbar a:hover {
   text-decoration: underline;
 }
+
+.logout_button {
+  padding: 5px;
+}
+
+.logout_button:hover {
+  cursor: pointer;
+  background-color: #ff3535;
+}

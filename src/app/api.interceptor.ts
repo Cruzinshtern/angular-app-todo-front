@@ -1,25 +1,3 @@
-// import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs';
-// // import { Observable } from 'rxjs';
-// import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-//
-// @Injectable()
-// export class ParamInterceptor implements HttpInterceptor {
-//   constructor() {  }
-//   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-//     const authToken = localStorage.getItem('auth_token');
-//     req = req.clone({
-//       headers: req.headers.set('Authorization', 'Bearer ' + authToken),
-//       setHeaders: {
-//           Authorization: 'Bearer ' + authToken
-//       }
-//     });
-//     return next.handle(req);
-//   }
-// }
-//
-//
-
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,

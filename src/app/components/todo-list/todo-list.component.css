@@ -1,6 +1,13 @@
-.todoList_component {
+.todo_list_component {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.table_header {
+  width: 600px;
+  display: flex;
+  justify-content: space-evenly;
+
 }

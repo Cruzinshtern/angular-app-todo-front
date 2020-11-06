@@ -1,4 +1,37 @@
-<div class="todoItem_component">
-  {{todo.name}}
-  <button (click)="onDelete(todo)" class="delete">X</button>
-</div>
+<table class="todo_item_component">
+  <tr>
+    <td>{{todo.name}}</td>
+    <td>{{todo.description}}</td>
+    <td class="status_buttons">
+      <button
+        class="button"
+        (click)="changeProgStatus(todo)"
+      >
+        In progress
+        </button>
+      <button
+        class="button"
+        (click)="changeDoneStatus(todo)"
+      >
+        Done
+      </button>
+    </td>
+    <td>Completed: {{todo.isCompleted}}</td>
+    <td>In Progress: {{todo.isInProgress}}</td>
+    <td>
+      <button
+        (click)="onClick()"
+        class="button"
+      >
+        Modify
+      </button>
+      <button
+        (click)="onDelete(todo)"
+        class="button"
+      >
+        Delete
+      </button>
+    </td>
+  </tr>
+</table>
+

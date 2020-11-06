@@ -1,9 +1,3 @@
-<!--<div class="home_component">-->
-<!--  <h2 class="title" *ngIf="this.auth.isLoggedOut">Welcome to the Home  page of my TODO APP</h2>-->
-<!--  <h2 class="title" *ngIf="this.auth.isLoggedIn">You have logged in</h2>-->
-<!--    <app-login *ngIf="this.auth.isLoggedOut"></app-login>-->
-<!--</div>-->
-
 <div class="home_component" *ngIf="this.auth.isLoggedOut">
   <h2 class="title">Login to proceed further</h2>
   <app-login></app-login>

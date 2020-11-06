@@ -1,7 +1,22 @@
-<form (ngSubmit)="onSubmit($event)" class="form_component">
-  <h3>Todo form</h3>
-  <input type="text" name="name" [(ngModel)]="name" placeholder="Add todo..." class="formInput">
-  <button type="submit" class="formButton">Submit</button>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form_component">
+  <h3>Todo Form</h3>
+  <table>
+    <tr>
+      <td>
+        Todo Name
+      </td>
+      <td>
+        <input type="text" name="name" formControlName="name">
+      </td>
+    </tr>
+    <tr>
+      <td>Todo Description</td>
+      <td>
+        <input type="text" name="description" formControlName="description">
+      </td>
+    </tr>
+  </table>
+  <button type="submit" [disabled]="!form.valid" class="formButton">Submit</button>
 </form>
-
+<p class="form_component_footer">Click <a routerLink="/todolist">here</a> to see your todos</p>
 

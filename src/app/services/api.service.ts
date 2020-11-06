@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-// import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Todo } from '../classes/Todo';
-import { User } from '../classes/User';
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
+
 
 export interface ITodo {
   name: string;
@@ -13,17 +11,22 @@ export interface ITodo {
 @Injectable()
 export class ApiService {
 
-  private URL = environment.API  + '/';
   private todosURL = environment.API  + '/todos';
   private usersURL = environment.API  +  '/users';
 
   constructor(private http: HttpClient) { }
 
-  todo: Todo;
+  _________________________________________________________________________________________________________________
 
-  getData(): Observable<any> {
+  getTodos(): Observable<any> {
     return this.http.get(this.todosURL);
   }
+
+  getTodo(id): Observable<any> {
+    const endPoints = `/${id}`;
+    return this.http.get(this.todosURL + endPoints);
+  }
+
 
   getUsers(): Observable<any> {
     return this.http.get(this.usersURL);
@@ -37,19 +40,19 @@ export class ApiService {
     return this.http.post(this.usersURL, user);
   }
 
-  // deleteTodo(todo) {
-  //   const endPoints = `/${todo.id}`;
-  //   this.http.delete(this.todosURL + endPoints).subscribe(
-  //     data => {
-  //       window.location.reload();
-  //       console.log(data);
-  //     });
-  // }
-  //
-
   deleteTodo(todo): Observable<any> {
       const endPoints = `/${todo.id}`;
       return this.http.delete(this.todosURL + endPoints);
+  }
+
+  patchTodo(id, updatedData): Observable<any> {
+    const endPoints = `/${id}`;
+    return this.http.patch(this.todosURL + endPoints, updatedData);
+  }
+
+  editTodo(id, updatedData): Observable<any> {
+    const endpoints = `/${id}`;
+    return this.http.put(this.todosURL + endpoints, updatedData);
   }
 
 }

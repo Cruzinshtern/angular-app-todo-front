@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import {User} from '../../classes/User';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +10,25 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  name: string;
-  password: string;
+  form: FormGroup;
   token;
 
-  constructor(public auth: AuthService, private router: Router) { }
+  constructor(
+    public auth: AuthService,
+    private router: Router,
+    public fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      name: [null, Validators.required],
+      password: [null, Validators.required]
+    });
   }
 
-  onLogin(e) {
-    const loginUser = {
-      name: this.name,
-      password: this.password
-    };
+  onLogin() {
+    const loginUser = this.form.getRawValue();
+    this.form.reset();
     this.auth.loginUser(loginUser).subscribe(
       (response: any) => {
         if (response.data.token == null) {
@@ -37,11 +42,8 @@ export class LoginComponent implements OnInit {
         }
       }
     );
-
-    e.target.reset();
   }
   onLogout() {
     this.auth.logoutUser();
   }
-
 }

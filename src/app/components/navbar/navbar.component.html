@@ -5,6 +5,8 @@
   <a routerLink="/form">| Create new todo |</a>
   <a routerLink="/todolist">| Todo List |</a>
   <a routerLink="/registration">| Registration |</a>
-  <!--  <a routerLink="/users">| Users | </a>-->
-  <button (click)="onLogout()" *ngIf="auth.isLoggedIn">Logout</button>
+  <button
+    (click)="onLogout()"
+    *ngIf="auth.isLoggedIn"
+    class="logout_button">Logout</button>
 </nav>

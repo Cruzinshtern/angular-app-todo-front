@@ -1,20 +1,24 @@
-.delete {
-  background: #ff0000;
-  color: #fff;
-}
-
-.todoItem_component {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px;
+.todo_item_component {
   padding: 10px;
-  width: 170px;
-  background-color: #1cfc03;
-  border-radius: 10px;
+  margin: 10px;
+  width: 90vw;
+  display: flex;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  box-shadow: 5px 10px #888888;
 }
 
-.is-complete {
-  text-decoration: line-through;
+.todo_item_component tr td {
+  width: 200px;
 }
 
+.button {
+  padding: 5px;
+  margin: 5px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: grey;
+  transition-delay: 0.8ms;
+}

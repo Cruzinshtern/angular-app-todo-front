@@ -1,0 +1,11 @@
+<div class="bg-modal" *ngIf="open">
+  <div class="modal-content">
+    <p>You can modify your todo here</p>
+    <form [formGroup]="editableTodoForm" *ngIf="editableTodoForm" (ngSubmit)="onSubmit()">
+      <input type="text" name="name" formControlName="name">
+      <input type="text" name="description" formControlName="description">
+      <button type="submit">Submit</button>
+    </form>
+    <button class="close" (click)="onClick()">Close</button>
+  </div>
+</div>

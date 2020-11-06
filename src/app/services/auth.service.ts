@@ -27,16 +27,15 @@ export class AuthService {
     this.router.navigate(['']);
   }
 
-  public get isLoggedIn(): boolean {
+  isLoggedIn(): boolean {
     return (
       this.getToken() !== null
     );
   }
 
-  public get isLoggedOut(): boolean {
+  isLoggedOut(): boolean {
     return (
       this.getToken() == null
     );
   }
-
 }

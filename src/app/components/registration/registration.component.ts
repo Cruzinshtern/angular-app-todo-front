@@ -1,41 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { v4 as uuidv4 } from 'uuid';
-import {HttpClient} from '@angular/common/http';
-import {ApiService} from '../../services/api.service';
-import {Router} from '@angular/router';
+import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
-  name: string;
-  email: string;
-  password: string;
-  userArr = [];
 
-  constructor(private http: HttpClient, private api: ApiService, private router: Router) { }
+export class RegistrationComponent implements OnInit {
+  form: FormGroup;
+
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private fb: FormBuilder
+   ) { }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      name: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]],
+    });
   }
 
-  onSubmit(e) {
-    const newUser = {
-      id: uuidv4(),
-      name: this.name,
-      email: this.email,
-      password: this.password
-    };
-
-    this.api.postUsers(newUser).subscribe(
-      data => {
-        this.userArr = data;
+  onSubmit() {
+    const user = this.form.getRawValue();
+    this.form.reset();
+    this.api.postUsers(user).subscribe(
+      (data) => {
         console.log(data);
-        this.router.navigate(['']);
-      }
+      },
+      (err) => {
+        console.log(err);
+      },
     );
-    e.target.reset();
   }
-
 }

@@ -15,14 +15,6 @@
   margin: 5px;
 }
 
-.formButton {
-  font-weight: bolder;
-  font-size: 15px;
-  background-color: #ff2a2a;
-}
-
-.formButton:hover {
-  transition: ease;
-  cursor: pointer;
-  background-color: #1cfc03;
+.form_component_footer {
+  text-align: center;
 }
