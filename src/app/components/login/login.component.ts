@@ -31,13 +31,13 @@ export class LoginComponent implements OnInit {
     this.form.reset();
     this.auth.loginUser(loginUser).subscribe(
       (response: any) => {
-        if (response.data.token == null) {
+        if (response.data == null) {
           console.log(response.data);
-          alert(response.data);
+          // alert(response.data);
         } else {
           console.log(response);
-          console.log('TOKEN', response.data.token);
-          localStorage.setItem('auth_token', response.data.token);
+          console.log('TOKEN', response.data);
+          localStorage.setItem('auth_token', response.data);
           this.router.navigate(['form']);
         }
       }

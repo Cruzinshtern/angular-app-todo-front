@@ -52,7 +52,7 @@ export class ApiService {
 
   editTodo(id, updatedData): Observable<any> {
     const endpoints = `/${id}`;
-    return this.http.put(this.todosURL + endpoints, updatedData);
+    return this.http.patch(this.todosURL + endpoints, updatedData);
   }
 
 }

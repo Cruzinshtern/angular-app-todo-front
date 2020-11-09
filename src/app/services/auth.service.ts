@@ -27,13 +27,13 @@ export class AuthService {
     this.router.navigate(['']);
   }
 
-  isLoggedIn(): boolean {
+  public get isLoggedIn(): boolean {
     return (
       this.getToken() !== null
     );
   }
 
-  isLoggedOut(): boolean {
+  public get isLoggedOut(): boolean {
     return (
       this.getToken() == null
     );
