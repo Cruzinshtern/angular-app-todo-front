@@ -1,0 +1,10 @@
+<div class="bg-modal" *ngIf="open">
+  <div class="modal-content">
+    <p>User Profile</p>
+    <button (click)="onClick()">Close</button>
+    <form [formGroup]="userCardForm" *ngIf="userCardForm">
+      <input type="text" formControlName="name">
+      <input type="text" formControlName="email">
+    </form>
+  </div>
+</div>

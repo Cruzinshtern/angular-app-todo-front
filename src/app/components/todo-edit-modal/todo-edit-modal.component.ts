@@ -44,6 +44,7 @@ export class TodoEditModalComponent implements OnInit {
   onSubmit() {
     const editedTodo = this.editableTodoForm.getRawValue();
     // this.editableTodoForm.reset();
+    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@', editedTodo);
     this.api.editTodo(this.todoListModalService.todoId, {
       name: this.editableTodoForm.value.name,
       description: this.editableTodoForm.value.description

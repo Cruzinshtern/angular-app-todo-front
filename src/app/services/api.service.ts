@@ -32,6 +32,11 @@ export class ApiService {
     return this.http.get(this.usersURL);
   }
 
+  getUser(id): Observable<any> {
+    const endPoints = `/${id}`;
+    return this.http.get(this.usersURL + endPoints);
+  }
+
   postTodos(todo): Observable<any> {
     return this.http.post(this.todosURL, todo);
   }

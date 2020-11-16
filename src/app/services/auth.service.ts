@@ -27,6 +27,11 @@ export class AuthService {
     this.router.navigate(['']);
   }
 
+  // getLoggedUserInfo() {
+  //   const token = this.getToken();
+  //
+  // }
+
   public get isLoggedIn(): boolean {
     return (
       this.getToken() !== null

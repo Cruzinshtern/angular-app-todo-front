@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.auth.loginUser(loginUser).subscribe(
       (response: any) => {
         if (response.data == null) {
-          console.log(response.data);
+          console.log(response);
           // alert(response.data);
         } else {
           console.log(response);

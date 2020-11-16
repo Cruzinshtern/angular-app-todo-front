@@ -15,6 +15,9 @@ import { ParamInterceptor } from './api.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { TodoEditModalComponent } from './components/todo-edit-modal/todo-edit-modal.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserItemComponent } from './components/user-item/user-item.component';
+import { UserModalComponent } from './components/user-modal/user-modal.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { TodoEditModalComponent } from './components/todo-edit-modal/todo-edit-m
     LoginComponent,
     RegistrationComponent,
     TodoItemComponent,
-    TodoEditModalComponent
+    TodoEditModalComponent,
+    UserListComponent,
+    UserItemComponent,
+    UserModalComponent
   ],
   imports: [
     BrowserModule,
