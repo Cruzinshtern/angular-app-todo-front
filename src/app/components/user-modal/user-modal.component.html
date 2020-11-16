@@ -1,10 +1,12 @@
 <div class="bg-modal" *ngIf="open">
   <div class="modal-content">
-    <p>User Profile</p>
-    <button (click)="onClick()">Close</button>
-    <form [formGroup]="userCardForm" *ngIf="userCardForm">
-      <input type="text" formControlName="name">
-      <input type="text" formControlName="email">
-    </form>
+    <h2>User Profile</h2>
+    <button (click)="onClick()" class="close">Close</button>
+    <div>
+      <p>Name: {{userCard?.name}}</p>
+      <p>Email: {{userCard?.email}}</p>
+      <p>Role: {{userCard?.role}}</p>
+      <p>Todos ({{userCard?.todos.length}}): {{userCard?.todos}}</p>
+    </div>
   </div>
 </div>

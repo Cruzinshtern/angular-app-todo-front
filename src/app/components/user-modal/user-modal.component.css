@@ -22,14 +22,8 @@
   position: relative;
 }
 
-.modal-content form {
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-content form input {
-  margin: 5px;
-  padding: 5px;
+.modal-content h2 {
+  padding: 15px;
 }
 
 .close {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoListModalService } from '../../services/todo-list-modal.service';
 import { ApiService } from '../../services/api.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-modal',
@@ -11,12 +10,11 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class UserModalComponent implements OnInit {
 
   open: boolean;
-  userCardForm: FormGroup;
+  userCard;
 
   constructor(
     public todoListModalService: TodoListModalService,
     private api: ApiService,
-    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -26,10 +24,13 @@ export class UserModalComponent implements OnInit {
       if (isModalUserOpen) {
         this.api.getUser(this.todoListModalService.userModalId).subscribe(
           data => {
-            this.userCardForm = this.fb.group({
-              name: new FormControl(data.data.name),
-              email: new FormControl(data.data.email)
-            });
+              this.userCard = {
+                name: data.data.name,
+                email: data.data.email,
+                role: data.data.role,
+                todos: data.data.todos.map(todo => todo.name)
+              };
+              console.log('USERCARD', this.userCard);
             }
         );
       }
