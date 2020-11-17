@@ -1,5 +1,7 @@
 <app-user-item
   *ngFor="let user of userList"
   [user] = "user"
+  [isAdmin] = isAdmin
 ></app-user-item>
+<p class="denied">{{denied}}</p>
 <app-user-modal></app-user-modal>

@@ -4,7 +4,7 @@
 </div>
 
 <div class="home_component" *ngIf="this.auth.isLoggedIn">
-  <h2 class="title">Welcome: You are on the Home Page</h2>
+  <h2 class="title">Welcome {{loggedUser}}: You are on the Home Page</h2>
   <p>This is the APP which gives you the opportunity to add your todos</p>
   <h2>Click <a routerLink="/form">here</a> to make your todo</h2>
 </div>

@@ -5,19 +5,20 @@
     <td class="status_buttons">
       <button
         class="button"
-        (click)="changeProgStatus(todo)"
-      >
-        In progress
-        </button>
-      <button
-        class="button"
         (click)="changeDoneStatus(todo)"
       >
         Done
       </button>
+      {{todo.isCompleted}}
     </td>
-    <td>Completed: {{todo.isCompleted}}</td>
-    <td>In Progress: {{todo.isInProgress}}</td>
+    <td>
+      <button
+        class="button"
+        (click)="changeProgStatus(todo)"
+      >
+        In progress
+      </button>
+      {{todo.isInProgress}}</td>
     <td>
       <button
         (click)="onClick()"

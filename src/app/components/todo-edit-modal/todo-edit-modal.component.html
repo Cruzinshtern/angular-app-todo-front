@@ -4,7 +4,7 @@
     <form [formGroup]="editableTodoForm" *ngIf="editableTodoForm" (ngSubmit)="onSubmit()">
       <input type="text" name="name" formControlName="name">
       <input type="text" name="description" formControlName="description">
-      <button type="submit">Submit</button>
+      <button type="submit" class="submit_button">Submit</button>
     </form>
     <button class="close" (click)="onClick()">Close</button>
   </div>

@@ -1,12 +1,24 @@
 .registration {
   padding: 20px;
-  margin: 0 40px 0 40px;
+  margin: 20px 40px 0 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid black;
   border-radius: 20px;
-  background-color: whitesmoke;
+  background-color: #dedcdc;
+  box-shadow: 5px 10px #888888;
+  min-width: min-content;
 }
 
+.label {
+  padding: 10px;
+}
+
+.label input {
+  padding: 5px;
+}
+
+.registration button {
+  padding: 5px;
+}

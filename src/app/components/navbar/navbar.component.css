@@ -31,6 +31,10 @@
 
 .logout_button {
   padding: 5px;
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .logout_button:hover {

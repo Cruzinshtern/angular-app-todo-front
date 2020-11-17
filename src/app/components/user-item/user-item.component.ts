@@ -10,6 +10,7 @@ import { TodoListModalService } from '../../services/todo-list-modal.service';
 export class UserItemComponent implements OnInit {
 
   @Input() user: User;
+  @Input() isAdmin;
   @Output() displayModalOpen: EventEmitter<boolean> = new EventEmitter();
 
   constructor(public todoListModalService: TodoListModalService) { }

@@ -3,11 +3,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-width: min-content;
 }
 
 .table_header {
   width: 600px;
   display: flex;
   justify-content: space-evenly;
+}
 
+.redirect {
+  padding: 10px;
+  margin: 5px;
+  background-color: #dedcdc;
+  border-radius: 20px;
+}
+
+.redirect:hover {
+  cursor: pointer;
+  background-color: #1fff00;
 }

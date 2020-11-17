@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { TodoListModalService } from '../../services/todo-list-modal.service';
 import { ApiService } from '../../services/api.service';
 
@@ -11,6 +11,7 @@ export class UserModalComponent implements OnInit {
 
   open: boolean;
   userCard;
+
 
   constructor(
     public todoListModalService: TodoListModalService,

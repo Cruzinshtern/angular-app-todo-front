@@ -10,13 +10,17 @@ import { ApiService } from '../../services/api.service';
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
+  isAdmin: boolean;
+  userName: string;
 
   constructor(private http: HttpClient, private api: ApiService) { }
 
   ngOnInit(): void {
     this.api.getTodos().subscribe(
       data => {
+        console.log(data);
         this.todos = data.data;
+        this.userName = data.userInfo.name;
       });
   }
   }

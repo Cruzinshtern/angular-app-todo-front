@@ -1,12 +1,13 @@
 <div class="todo_list_component">
+  <p *ngIf="isAdmin">Hello Admin</p>
 <div class="table_header">
-  <h3>MY TODOS</h3>
+  <h3>Dear {{userName}}, welcome to the list of TODOS</h3>
 </div>
 <app-todo-item
   *ngFor="let todo of todos"
   [todo] = "todo"
 ></app-todo-item>
-  <h2>Click <a routerLink="/form">here</a> to add new todo</h2>
+  <h3 routerLink="/form" class="redirect">ADD NEW TODO</h3>
 </div>
 <app-todo-edit-modal></app-todo-edit-modal>
 

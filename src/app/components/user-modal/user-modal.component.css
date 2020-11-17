@@ -10,8 +10,8 @@
 }
 
 .modal-content {
-  height: 300px;
-  width: 500px;
+  height: fit-content;
+  width: 70vw;
   background-color: white;
   border-radius: 4px;
   display: flex;
@@ -26,9 +26,20 @@
   padding: 15px;
 }
 
+.avatar {
+  height: 100px;
+  width: 100px;
+}
+
+.userInfo p {
+  padding: 5px;
+  margin: 5px;
+}
+
 .close {
   position: absolute;
   top: 0;
   right: 14px;
-  font-size: 40px;
+  font-size: 20px;
+  margin-top: 5px;
 }

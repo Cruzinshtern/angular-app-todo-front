@@ -4,8 +4,8 @@
 <nav class="navbar" *ngIf="this.auth.isLoggedIn">
   <a routerLink="/form">| Create new todo |</a>
   <a routerLink="/todolist">| Todo List |</a>
-  <a routerLink="/registration">| Registration |</a>
   <a routerLink="/users">| Users |</a>
+  <a routerLink="/registration">| Registration |</a>
 
   <button
     (click)="onLogout()"

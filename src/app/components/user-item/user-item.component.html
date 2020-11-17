@@ -3,6 +3,6 @@
     <td>{{user.name}}</td>
     <td>{{user.email}}</td>
     <td>{{user.role}}</td>
-    <td><button (click)="onClick()">Open User Profile</button></td>
+    <td *ngIf="isAdmin"><button (click)="onClick()" class="open_profile_btn">Open User Profile</button></td>
   </tr>
 </table>

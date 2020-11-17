@@ -1,13 +1,20 @@
 .form_component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
   padding: 20px;
-  margin: 0 40px 0 40px;
+  margin: 0 40px 10px 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid black;
+  background-color: #dedcdc;
   border-radius: 20px;
-  background-color: whitesmoke;
+  box-shadow: 5px 10px #888888;
 }
 
 .formInput, .formButton {
@@ -16,5 +23,13 @@
 }
 
 .form_component_footer {
-  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  background-color: #dedcdc;
+  border-radius: 20px;
+}
+
+.form_component_footer:hover {
+  cursor: pointer;
+  background-color: #1fff00;
 }

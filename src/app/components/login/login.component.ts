@@ -32,9 +32,8 @@ export class LoginComponent implements OnInit {
     this.auth.loginUser(loginUser).subscribe(
       (response: any) => {
         if (response.data == null) {
-          console.log(response);
-          // alert(response.data);
-        } else {
+          alert(response.status);
+          } else {
           console.log(response);
           console.log('TOKEN', response.data);
           localStorage.setItem('auth_token', response.data);
