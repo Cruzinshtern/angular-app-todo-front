@@ -3,11 +3,21 @@
 <div class="table_header">
   <h3>Dear {{userName}}, welcome to the list of TODOS</h3>
 </div>
+  <h3 routerLink="/form" class="redirect">ADD NEW TODO</h3>
+  <table class="table">
+    <tr>
+      <td>Name</td>
+      <td>Description</td>
+      <td>In Progress</td>
+      <td>Done</td>
+      <td>Other</td>
+    </tr>
+  </table>
+
 <app-todo-item
   *ngFor="let todo of todos"
   [todo] = "todo"
 ></app-todo-item>
-  <h3 routerLink="/form" class="redirect">ADD NEW TODO</h3>
 </div>
 <app-todo-edit-modal></app-todo-edit-modal>
 

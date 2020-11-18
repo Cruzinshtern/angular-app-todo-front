@@ -18,6 +18,7 @@ import { TodoEditModalComponent } from './components/todo-edit-modal/todo-edit-m
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserItemComponent } from './components/user-item/user-item.component';
 import { UserModalComponent } from './components/user-modal/user-modal.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { UserModalComponent } from './components/user-modal/user-modal.component
     TodoEditModalComponent,
     UserListComponent,
     UserItemComponent,
-    UserModalComponent
+    UserModalComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

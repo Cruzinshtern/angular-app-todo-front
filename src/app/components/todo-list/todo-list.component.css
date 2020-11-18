@@ -3,20 +3,33 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: min-content;
+  margin-bottom: 4rem;
 }
 
 .table_header {
-  width: 600px;
+  text-align: center;
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 1rem;
+}
+
+.table{
+  width: 90vw;
+}
+
+.table td{
+  background-color: #888888;
+  width: 20%;
+  text-align: center;
+  padding: 1rem;
 }
 
 .redirect {
   padding: 10px;
-  margin: 5px;
+  margin: 5px 0 10px 0;
   background-color: #dedcdc;
   border-radius: 20px;
+  width: fit-content;
 }
 
 .redirect:hover {

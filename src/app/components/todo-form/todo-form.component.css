@@ -15,11 +15,30 @@
   background-color: #dedcdc;
   border-radius: 20px;
   box-shadow: 5px 10px #888888;
+  width: 50%;
+  height: 30vh;
 }
 
-.formInput, .formButton {
-  padding: 10px;
-  margin: 5px;
+.form_input {
+  padding: 0.3rem;
+  margin: 1rem;
+  border: 0;
+  border-bottom: 0.1rem solid grey;
+  outline: 0;
+}
+
+.form_input:focus {
+  transition: 0.5s ease;
+  border-bottom: 0.3rem solid grey;
+}
+
+.form_textarea {
+  padding: 0.3rem;
+  margin: 1rem;
+  border: 0;
+  border-bottom: 0.1rem solid grey;
+  outline: 0;
+  height: 60px;
 }
 
 .form_component_footer {

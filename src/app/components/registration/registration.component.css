@@ -9,14 +9,24 @@
   background-color: #dedcdc;
   box-shadow: 5px 10px #888888;
   min-width: min-content;
+  height: 30vh;
 }
 
-.label {
-  padding: 10px;
+.reg_header {
+  margin-bottom: 2rem;
 }
 
-.label input {
-  padding: 5px;
+input {
+  padding: 0.3rem;
+  margin: 1rem;
+  border: 0;
+  border-bottom: 0.1rem solid grey;
+  outline: 0;
+}
+
+input:focus {
+  transition: 0.5s ease;
+  border-bottom: 0.3rem solid grey;
 }
 
 .registration button {

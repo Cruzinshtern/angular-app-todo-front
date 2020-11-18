@@ -1,12 +1,14 @@
 <form [formGroup]="form" (ngSubmit)="onLogin()" class="login">
   <h3>Login Form</h3>
-    <label class="label">
-      Enter your username:
-      <input type="text" formControlName="name">
-    </label>
-    <label class="label">
-      Enter your password:
-      <input type="password" formControlName="password">
-    </label>
+      <input
+        type="text"
+        formControlName="name"
+        placeholder="Name"
+      >
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+      >
   <button [disabled]="!form.valid" type="submit">Submit</button>
 </form>

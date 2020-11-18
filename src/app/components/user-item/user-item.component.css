@@ -7,7 +7,8 @@
   border-radius: 20px;
   background-color: #dedcdc;
   box-shadow: 5px 10px #888888;
-  min-width: min-content;
+  white-space: nowrap;
+  min-width: fit-content;
 }
 
 .user_item_component tr td {

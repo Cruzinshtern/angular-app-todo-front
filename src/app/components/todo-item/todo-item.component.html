@@ -2,6 +2,17 @@
   <tr>
     <td>{{todo.name}}</td>
     <td>{{todo.description}}</td>
+
+    <td>
+      <button
+        class="button"
+        (click)="changeProgStatus(todo)"
+      >
+        In progress
+      </button>
+      {{todo.isInProgress}}
+    </td>
+
     <td class="status_buttons">
       <button
         class="button"
@@ -11,14 +22,7 @@
       </button>
       {{todo.isCompleted}}
     </td>
-    <td>
-      <button
-        class="button"
-        (click)="changeProgStatus(todo)"
-      >
-        In progress
-      </button>
-      {{todo.isInProgress}}</td>
+
     <td>
       <button
         (click)="onClick()"

@@ -1,16 +1,19 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="registration">
-  <h3>Registration Form</h3>
-  <label class="label">
-    Name:
-    <input type="text" formControlName="name">
-  </label>
-  <label class="label">
-    Email:
-    <input type="email" formControlName="email">
-  </label>
-  <label class="label">
-    Password:
-    <input type="password" formControlName="password">
-  </label>
+  <h3 class="reg_header">Registration Form</h3>
+    <input
+      type="text"
+      formControlName="name"
+      placeholder="User name"
+    >
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Email"
+    >
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+    >
   <button [disabled]="!form.valid" type="submit">Submit</button>
 </form>
