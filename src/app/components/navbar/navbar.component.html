@@ -1,15 +1,20 @@
-<h1 class="header">
-  <img src="./assets/img/todo.jpg" alt="todo logo" class="todo_logo" routerLink="">
-  <a routerLink="">Welcome to my Todo App</a>
-</h1>
 <nav class="navbar" *ngIf="this.auth.isLoggedIn">
-  <a routerLink="/form">| Create new todo |</a>
-  <a routerLink="/todolist">| Todo List |</a>
-  <a routerLink="/users">| Users |</a>
-  <a routerLink="/registration">| Registration |</a>
+  <a class="name">TODO APP </a>
+  <a routerLink="/form">Create new todo </a>
+  <a routerLink="/todolist">Todo List </a>
+  <a routerLink="/users">Users </a>
+  <a routerLink="/registration">Registration</a>
+  <div class="logout_block">
+    <img src="./assets/img/image-removebg-preview%20(2).png">
+    <button
+      (click)="onLogout()"
+      *ngIf="auth.isLoggedIn"
+      class="logout_button">Logout
+    </button>
+  </div>
 
-  <button
-    (click)="onLogout()"
-    *ngIf="auth.isLoggedIn"
-    class="logout_button">Logout</button>
 </nav>
+
+<h1 class="header">
+  <h2>Welcome to my Todo App</h2>
+</h1>

@@ -1,3 +1,31 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  font-size: 20px;
+  white-space: nowrap;
+  background-color: #dedcdc;
+  width: 100%;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+  margin: 0 5px 0 5px;
+}
+
+.name {
+  font-family: 'Bebas Neue', cursive;
+  margin: 0 30px 0 30px !important;
+  font-weight: 900;
+  font-size: xx-large;
+}
+
+.navbar a:hover, .name {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .header {
   display: flex;
   justify-content: center;
@@ -5,7 +33,7 @@
   font-size: 40px;
   font-family: 'Bebas Neue', cursive;
   padding-top: 10px;
-  margin-top: 200px;
+  margin-top: 30px;
 }
 
 .header a {
@@ -13,45 +41,25 @@
   color: black;
 }
 
-.navbar {
+.logout_block {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 60px;
-  font-size: 20px;
-  white-space: nowrap;
+  margin-left: 15px;
 }
 
-.navbar a {
-  text-decoration: none;
-  color: black;
-}
-
-.navbar a:hover {
-  text-decoration: underline;
+.logout_block img {
+  height: 30px;
+  background-color: #dedcdc;
 }
 
 .logout_button {
-  padding: 5px;
-  margin: 10px;
-  position: absolute;
-  top: 0;
-  right: 0;
+  border: 0;
+  background-color: #dedcdc;
+  font-size: 15px;
+  outline: 0;
 }
 
 .logout_button:hover {
   cursor: pointer;
-  background-color: #ff3535;
-}
-
-.todo_logo {
-  position: absolute;
-  top: -50px;
-  left: 0;
-  outline: 0;
-}
-
-.todo_logo:hover {
-  width: 350px;
-  height: 250px;
+  color: red;
 }
