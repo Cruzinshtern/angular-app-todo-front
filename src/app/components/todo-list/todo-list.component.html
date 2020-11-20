@@ -4,6 +4,19 @@
   <h3>Dear {{userName}}, welcome to the list of TODOS</h3>
 </div>
   <h3 routerLink="/form" class="redirect">ADD NEW TODO</h3>
+  <table class="page_toggle">
+    <tr>
+      <td>
+        <button *ngIf="prevIsActive" (click)="prevPage()">Previous</button>
+      </td>
+      <td>
+        {{this.page+1}}
+      </td>
+      <td>
+        <button *ngIf="nextIsActive" (click)="nextPage()">Next</button>
+      </td>
+    </tr>
+  </table>
   <table class="table">
     <tr>
       <td>Name</td>

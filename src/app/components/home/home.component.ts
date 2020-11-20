@@ -10,16 +10,17 @@ import {ApiService} from '../../services/api.service';
 export class HomeComponent implements OnInit {
 
   loggedUser: string;
+  params;
 
   constructor(public auth: AuthService, private api: ApiService) { }
 
   ngOnInit(): void {
-    this.api.getUsers().subscribe(
+    this.api.getUsers(this.params).subscribe(
       response => {
         console.log('Home', response);
-        this.loggedUser = response.userInfo.name;
+        this.loggedUser = response.authUserInfo.name;
       }
-    )
+    );
   }
 
 }

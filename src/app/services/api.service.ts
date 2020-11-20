@@ -18,8 +18,12 @@ export class ApiService {
 
   _________________________________________________________________________________________________________________
 
-  getTodos(): Observable<any> {
+  getTodosAll(): Observable<any> {
     return this.http.get(this.todosURL);
+  }
+
+  getTodos(params): Observable<any> {
+    return this.http.get(this.todosURL, {params});
   }
 
   getTodo(id): Observable<any> {
@@ -28,8 +32,8 @@ export class ApiService {
   }
 
 
-  getUsers(): Observable<any> {
-    return this.http.get(this.usersURL);
+  getUsers(params): Observable<any> {
+    return this.http.get(this.usersURL, {params});
   }
 
   getUser(id): Observable<any> {
