@@ -93,11 +93,6 @@ export class ApiService {
     });
   }
 
-  patchTodo(id, updatedData): Observable<any> {
-    const endPoints = `/${id}`;
-    return this.http.patch(this.todosURL + endPoints, updatedData);
-  }
-
   editTodo(id, updatedData): Observable<any> {
     const endpoints = `/${id}`;
     return this.http.patch(this.todosURL + endpoints, updatedData);

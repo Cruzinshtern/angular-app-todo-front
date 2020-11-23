@@ -31,7 +31,7 @@ export class TodoItemComponent implements OnInit {
   }
 
   changeProgStatus(todo): void {
-    this.api.patchTodo(todo.id, {
+    this.api.editTodo(todo.id, {
       isInProgress: !todo.isInProgress
     }).subscribe(
       data => {
@@ -42,7 +42,7 @@ export class TodoItemComponent implements OnInit {
   }
 
   changeDoneStatus(todo): void {
-    this.api.patchTodo(todo.id, {
+    this.api.editTodo(todo.id, {
       isCompleted: !todo.isCompleted
     }).subscribe(
       data => {
