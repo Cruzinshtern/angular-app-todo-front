@@ -4,5 +4,6 @@
     <td>{{user.email}}</td>
     <td>{{user.role}}</td>
     <td *ngIf="isAdmin"><button (click)="onClick()" class="open_profile_btn">Open User Profile</button></td>
+    <td><button (click)="onDelete(user)">Delete</button></td>
   </tr>
 </table>

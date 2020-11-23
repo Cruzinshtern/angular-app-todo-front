@@ -8,7 +8,7 @@ import {User} from '../../classes/User';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  userList: User[];
+  userList: User[] = [];
   isAdmin: boolean;
   isManager: boolean;
   denied: string;
@@ -31,8 +31,9 @@ export class UserListComponent implements OnInit {
     };
     this.api.getUsers(params).subscribe(
       data => {
-        console.log(data);
-        // const userRole = data.authUserInfo.role;
+        // console.log(data);
+        const userRole = data.authUserInfo.role;
+        this.isAdmin = userRole === 'Admin';
         if (!data.data) {
           this.denied = data.status;
         } else {
@@ -40,8 +41,6 @@ export class UserListComponent implements OnInit {
         }
         const totalPages = data.data.totalPages;
         const currentPage = data.data.currentPage;
-        console.log(totalPages);
-        console.log(currentPage);
         if (currentPage === 0) {
           this.prevIsActive = false;
           this.nextIsActive = true;
@@ -52,6 +51,11 @@ export class UserListComponent implements OnInit {
           this.prevIsActive = true;
           this.nextIsActive = true;
         }
+      }
+    );
+    this.api.usersData.subscribe(
+      data => {
+        this.userList = data.users;
       }
     );
   }

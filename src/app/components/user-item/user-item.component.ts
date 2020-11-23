@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from '../../classes/User';
 import { TodoListModalService } from '../../services/todo-list-modal.service';
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'app-user-item',
@@ -13,17 +14,18 @@ export class UserItemComponent implements OnInit {
   @Input() isAdmin;
   @Output() displayModalOpen: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(public todoListModalService: TodoListModalService) { }
+  constructor(public todoListModalService: TodoListModalService,
+              private api: ApiService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  // openUserModal() {
-  //   console.log('Hello');
-  //   this.todoListModalService.openUserModal(this.user.id);
-  // }
-
-  onClick() {
+  onClick(): void {
     this.todoListModalService.openUserModal(this.user.id);
+  }
+
+  onDelete(user): void {
+    this.api.deleteUser(user);
   }
 }

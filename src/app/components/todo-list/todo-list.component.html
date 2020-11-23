@@ -3,6 +3,33 @@
 <div class="table_header">
   <h3>Dear {{userName}}, welcome to the list of TODOS</h3>
 </div>
+  <input
+    type="text"
+    placeholder="Search todo.."
+    [(ngModel)]="name"
+    class="search_field"
+  />
+  <button
+    type="button"
+    (click)="onClick()"
+    class="search_button"
+  >
+    Search
+  </button>
+
+  <form
+    [formGroup]="sortForm"
+    (ngSubmit)="sortByStatus()"
+    class="sort_form"
+  >
+    <label>Sort by:</label>
+    <select formControlName="status">
+      <option>In progress</option>
+      <option>Done</option>
+    </select>
+    <button type="submit" [disabled]="!sortForm.valid">Sort todos</button>
+  </form>
+
   <h3 routerLink="/form" class="redirect">ADD NEW TODO</h3>
   <table class="page_toggle">
     <tr>
@@ -32,6 +59,7 @@
   [todo] = "todo"
 ></app-todo-item>
 </div>
+
 <app-todo-edit-modal></app-todo-edit-modal>
 
 

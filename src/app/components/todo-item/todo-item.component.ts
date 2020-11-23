@@ -12,23 +12,25 @@ import { TodoListModalService } from '../../services/todo-list-modal.service';
 })
 export class TodoItemComponent implements OnInit {
 
+  newTodoList = [];
+
   @Input() todo: Todo;
   @Output() displayModalOpen: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private http: HttpClient, private api: ApiService, private todoListModalService: TodoListModalService) { }
+  constructor(
+    private http: HttpClient,
+    private api: ApiService,
+    private todoListModalService: TodoListModalService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onDelete(todo) {
-    this.api.deleteTodo(todo).subscribe(
-      data => {
-        console.log(data);
-      }
-    );
+  onDelete(todo): void {
+    this.api.deleteTodo(todo);
   }
 
-  changeProgStatus(todo) {
+  changeProgStatus(todo): void {
     this.api.patchTodo(todo.id, {
       isInProgress: !todo.isInProgress
     }).subscribe(
@@ -39,7 +41,7 @@ export class TodoItemComponent implements OnInit {
     );
   }
 
-  changeDoneStatus(todo) {
+  changeDoneStatus(todo): void {
     this.api.patchTodo(todo.id, {
       isCompleted: !todo.isCompleted
     }).subscribe(
@@ -50,7 +52,7 @@ export class TodoItemComponent implements OnInit {
     );
   }
 
- onClick() {
+ onClick(): void {
    this.todoListModalService.openModal(this.todo.id);
  }
 }
