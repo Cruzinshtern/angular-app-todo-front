@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from '../../services/api.service';
+import {TodosApiService} from '../../services/todos-api.service';
 import {User} from '../../classes/User';
+import {UsersApiService} from '../../services/users-api.service';
 
 @Component({
   selector: 'app-user-list',
@@ -10,7 +11,6 @@ import {User} from '../../classes/User';
 export class UserListComponent implements OnInit {
   userList: User[] = [];
   isAdmin: boolean;
-  isManager: boolean;
   denied: string;
 
   page = 0;
@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
   prevIsActive: boolean;
   nextIsActive: boolean;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: UsersApiService) { }
 
   ngOnInit(): void {
     this.getAllPaginatedUsers();
@@ -31,7 +31,6 @@ export class UserListComponent implements OnInit {
     };
     this.api.getUsers(params).subscribe(
       data => {
-        // console.log(data);
         const userRole = data.authUserInfo.role;
         this.isAdmin = userRole === 'Admin';
         if (!data.data) {

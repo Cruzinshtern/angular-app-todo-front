@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
+import { TodosApiService } from '../../services/todos-api.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {UsersApiService} from '../../services/users-api.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private api: ApiService,
+    private api: UsersApiService,
     private router: Router,
     private fb: FormBuilder
    ) { }
@@ -27,7 +28,7 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const user = this.form.getRawValue();
     this.form.reset();
     this.api.postUsers(user).subscribe(

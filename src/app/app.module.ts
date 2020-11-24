@@ -10,7 +10,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { HomeComponent } from './components/home/home.component';
-import { ApiService } from './services/api.service';
+import { TodosApiService } from './services/todos-api.service';
 import { ParamInterceptor } from './api.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -48,7 +48,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgxPaginationModule
   ],
   providers: [
-    ApiService, {
+    TodosApiService, {
     provide: HTTP_INTERCEPTORS,
     useClass: ParamInterceptor,
     multi: true

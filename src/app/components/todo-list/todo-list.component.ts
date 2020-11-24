@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../classes/Todo';
 import { HttpClient } from '@angular/common/http';
-import { ApiService } from '../../services/api.service';
+import { TodosApiService } from '../../services/todos-api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -20,10 +20,11 @@ export class TodoListComponent implements OnInit {
   nextIsActive: boolean;
   isCompleted: boolean;
   sortForm: FormGroup;
+  sorted: boolean;
 
   constructor(
     private http: HttpClient,
-    private api: ApiService,
+    public api: TodosApiService,
     private fb: FormBuilder
   ) { }
 
@@ -32,6 +33,7 @@ export class TodoListComponent implements OnInit {
     this.sortForm = this.fb.group({
       status: [null, Validators.required]
     });
+    this.sorted = false;
   }
 
   getAllPaginatedTodos(): void {
@@ -64,12 +66,20 @@ export class TodoListComponent implements OnInit {
 
   prevPage(): void {
     this.page--;
-    this.getAllPaginatedTodos();
+    if (!this.sorted) {
+      this.getAllPaginatedTodos();
+    } else {
+      this.sortClick();
+    }
   }
 
   nextPage(): void {
     this.page++;
-    this.getAllPaginatedTodos();
+    if (!this.sorted) {
+      this.getAllPaginatedTodos();
+    } else {
+      this.sortClick();
+    }
   }
 
   onClick(): void {
@@ -77,6 +87,30 @@ export class TodoListComponent implements OnInit {
       name: this.name
     };
     this.getAllPaginatedTodos();
+  }
+  sortClick(): void {
+    const params = {
+      name: this.name,
+      page: this.page,
+      size: this.pageSize
+    };
+    this.api.sortTodosByName(params).subscribe(
+      data => {
+        const totalPages = data.totalPages;
+        const currentPage = data.currentPage;
+        if (currentPage === 0) {
+          this.prevIsActive = false;
+          this.nextIsActive = true;
+        } else if (currentPage + 1 === totalPages) {
+          this.prevIsActive = true;
+          this.nextIsActive = false;
+        } else {
+          this.prevIsActive = true;
+          this.nextIsActive = true;
+        }
+      }
+    );
+    this.sorted = true;
   }
 
   sortByStatus(): void {
@@ -98,5 +132,4 @@ export class TodoListComponent implements OnInit {
       );
     }
   }
-
-  }
+}

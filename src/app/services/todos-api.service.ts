@@ -10,23 +10,18 @@ export interface ITodo {
 }
 
 @Injectable()
-export class ApiService {
+export class TodosApiService {
 
   todosData: BehaviorSubject<any> = new BehaviorSubject<any>({});
-  usersData: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   private todosURL = environment.API  + '/todos';
-  private usersURL = environment.API  +  '/users';
   private completedTodosURL = environment.API + '/completed';
   private inProgressURL = environment.API + '/progress';
+  private sortedTodosByNameURL = environment.API + '/sortbyname';
 
   constructor(private http: HttpClient) { }
 
   _________________________________________________________________________________________________________________
-
-  getTodosAll(): Observable<any> {
-    return this.http.get(this.todosURL);
-  }
 
   getTodos(params): Observable<any> {
     return this.http.get<any>(this.todosURL, {params}).pipe(map((data) => {
@@ -40,6 +35,14 @@ export class ApiService {
     return this.http.get(this.todosURL + endPoints);
   }
 
+  sortTodosByName(params): Observable<any> {
+      return this.http.get<any>(this.sortedTodosByNameURL, {params}).pipe(map((data) => {
+      this.todosData.next(data);
+      return data;
+    }));
+  }
+
+
   getCompletedTodos(): Observable<any> {
     return this.http.get(this.completedTodosURL);
   }
@@ -48,25 +51,12 @@ export class ApiService {
     return this.http.get(this.inProgressURL);
   }
 
-
-  getUsers(params): Observable<any> {
-    return this.http.get<any>(this.usersURL, {params}).pipe(map((data) => {
-      this.usersData.next(data.data);
-      return data;
-    }));
-  }
-
-  getUser(id): Observable<any> {
-    const endPoints = `/${id}`;
-    return this.http.get(this.usersURL + endPoints);
+  sortByName(): Observable<any> {
+    return this.http.get(this.sortedTodosByNameURL);
   }
 
   postTodos(todo): Observable<any> {
     return this.http.post(this.todosURL, todo);
-  }
-
-  postUsers(user): Observable<any> {
-    return this.http.post(this.usersURL, user);
   }
 
   async deleteTodo(todo): Promise<void> {
@@ -79,18 +69,6 @@ export class ApiService {
         ...this.todosData.getValue(),
         todos
       });
-  }
-
-  async deleteUser(user): Promise<void> {
-    const endPoints = `/${user.id}`;
-    const {data} = await this.http.delete<any>(this.usersURL + endPoints).toPromise();
-
-    const users = this.usersData.getValue().users.filter((userData) => userData.id !== user.id);
-
-    this.usersData.next({
-      ...this.usersData.getValue(),
-      users
-    });
   }
 
   editTodo(id, updatedData): Observable<any> {

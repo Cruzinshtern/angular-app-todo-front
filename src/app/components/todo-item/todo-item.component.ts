@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from '../../classes/Todo';
 import { HttpClient } from '@angular/common/http';
-import { ApiService } from '../../services/api.service';
+import { TodosApiService } from '../../services/todos-api.service';
 import { TodoListModalService } from '../../services/todo-list-modal.service';
 
 
@@ -19,7 +19,7 @@ export class TodoItemComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private api: ApiService,
+    private api: TodosApiService,
     private todoListModalService: TodoListModalService
   ) { }
 

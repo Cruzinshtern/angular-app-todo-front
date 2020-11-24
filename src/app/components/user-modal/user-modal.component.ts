@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { TodoListModalService } from '../../services/todo-list-modal.service';
-import { ApiService } from '../../services/api.service';
+import { TodosApiService } from '../../services/todos-api.service';
+import {UsersApiService} from '../../services/users-api.service';
 
 @Component({
   selector: 'app-user-modal',
@@ -15,7 +16,7 @@ export class UserModalComponent implements OnInit {
 
   constructor(
     public todoListModalService: TodoListModalService,
-    private api: ApiService,
+    private api: UsersApiService,
   ) { }
 
   ngOnInit(): void {

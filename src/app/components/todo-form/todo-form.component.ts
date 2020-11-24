@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiService } from '../../services/api.service';
+import { TodosApiService } from '../../services/todos-api.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -16,7 +16,7 @@ export class TodoFormComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private api: ApiService,
+    private api: TodosApiService,
     private router: Router,
     public fb: FormBuilder
   ) { }

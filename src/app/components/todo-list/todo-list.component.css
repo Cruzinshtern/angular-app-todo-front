@@ -69,3 +69,7 @@
   -moz-box-shadow: 0 5px 40px -10px rgba(0,0,0,0.57);
   transition: all 0.3s ease 0s;
 }
+
+.sortByName_button:hover {
+  cursor: pointer;
+}
