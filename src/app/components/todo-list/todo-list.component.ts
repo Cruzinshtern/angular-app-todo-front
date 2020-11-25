@@ -13,6 +13,8 @@ export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
   isAdmin: boolean;
   userName: string;
+  field = '';
+  dir = '';
   name = '';
   page = 0;
   pageSize = 3;
@@ -20,7 +22,6 @@ export class TodoListComponent implements OnInit {
   nextIsActive: boolean;
   isCompleted: boolean;
   sortForm: FormGroup;
-  sorted: boolean;
 
   constructor(
     private http: HttpClient,
@@ -33,17 +34,19 @@ export class TodoListComponent implements OnInit {
     this.sortForm = this.fb.group({
       status: [null, Validators.required]
     });
-    this.sorted = false;
   }
 
   getAllPaginatedTodos(): void {
     const params = {
+      field: this.field,
+      dir: this.dir,
       name: this.name,
       page: this.page,
       size: this.pageSize
     };
     this.api.getTodos(params).subscribe((data) => {
-      this.todos = data.data.todos;
+      console.log(data);
+      this.todos = data.data.result;
       this.userName = data.authUserInfo.name;
       const totalPages = data.data.totalPages;
       const currentPage = data.data.currentPage;
@@ -66,51 +69,31 @@ export class TodoListComponent implements OnInit {
 
   prevPage(): void {
     this.page--;
-    if (!this.sorted) {
-      this.getAllPaginatedTodos();
-    } else {
-      this.sortClick();
-    }
+    this.getAllPaginatedTodos();
   }
 
   nextPage(): void {
     this.page++;
-    if (!this.sorted) {
-      this.getAllPaginatedTodos();
-    } else {
-      this.sortClick();
-    }
+    this.getAllPaginatedTodos();
   }
 
-  onClick(): void {
+  searchButton(): void {
     const params = {
-      name: this.name
+     name: this.name
     };
     this.getAllPaginatedTodos();
   }
-  sortClick(): void {
-    const params = {
-      name: this.name,
-      page: this.page,
-      size: this.pageSize
-    };
-    this.api.sortTodosByName(params).subscribe(
-      data => {
-        const totalPages = data.totalPages;
-        const currentPage = data.currentPage;
-        if (currentPage === 0) {
-          this.prevIsActive = false;
-          this.nextIsActive = true;
-        } else if (currentPage + 1 === totalPages) {
-          this.prevIsActive = true;
-          this.nextIsActive = false;
-        } else {
-          this.prevIsActive = true;
-          this.nextIsActive = true;
-        }
-      }
-    );
-    this.sorted = true;
+
+  sortByNameClick(): void {
+    this.field = 'name';
+    this.dir = 'ASC';
+    this.getAllPaginatedTodos();
+  }
+
+  sortByDescClick(): void {
+    this.field = 'description';
+    this.dir = 'ASC';
+    this.getAllPaginatedTodos();
   }
 
   sortByStatus(): void {
@@ -119,7 +102,6 @@ export class TodoListComponent implements OnInit {
     if (statusFormData.status === 'In progress') {
       this.api.getInProgressTodos().subscribe(
         data => {
-          console.log(data);
           this.todos = data;
         }
       );

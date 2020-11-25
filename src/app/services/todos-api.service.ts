@@ -15,9 +15,8 @@ export class TodosApiService {
   todosData: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   private todosURL = environment.API  + '/todos';
-  private completedTodosURL = environment.API + '/completed';
-  private inProgressURL = environment.API + '/progress';
-  private sortedTodosByNameURL = environment.API + '/sortbyname';
+  private completedTodosURL = environment.API + '/todos/completed';
+  private inProgressTodosURL = environment.API + '/todos/progress';
 
   constructor(private http: HttpClient) { }
 
@@ -35,24 +34,12 @@ export class TodosApiService {
     return this.http.get(this.todosURL + endPoints);
   }
 
-  sortTodosByName(params): Observable<any> {
-      return this.http.get<any>(this.sortedTodosByNameURL, {params}).pipe(map((data) => {
-      this.todosData.next(data);
-      return data;
-    }));
-  }
-
-
   getCompletedTodos(): Observable<any> {
     return this.http.get(this.completedTodosURL);
   }
 
   getInProgressTodos(): Observable<any> {
-    return this.http.get(this.inProgressURL);
-  }
-
-  sortByName(): Observable<any> {
-    return this.http.get(this.sortedTodosByNameURL);
+    return this.http.get(this.inProgressTodosURL);
   }
 
   postTodos(todo): Observable<any> {

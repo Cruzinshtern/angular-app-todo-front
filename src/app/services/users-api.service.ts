@@ -14,6 +14,7 @@ export class UsersApiService {
 
 
   private usersURL = environment.API  +  '/users';
+  private usersRegURL = environment.API  +  '/users/registration';
 
   constructor(private http: HttpClient) { }
 
@@ -32,7 +33,7 @@ ________________________________________________________________________________
   }
 
   postUsers(user): Observable<any> {
-    return this.http.post(this.usersURL, user);
+    return this.http.post(this.usersRegURL, user);
   }
 
   async deleteUser(user): Promise<void> {

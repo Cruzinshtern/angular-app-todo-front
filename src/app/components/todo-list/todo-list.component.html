@@ -11,7 +11,7 @@
   />
   <button
     type="button"
-    (click)="onClick()"
+    (click)="searchButton()"
     class="search_button"
   >
     Search
@@ -47,10 +47,15 @@
   <table class="table">
     <tr>
       <td
-        (click)="sortClick()"
+        (click)="sortByNameClick()"
         class="sortByName_button"
-      >Name</td>
-      <td>Description</td>
+      >
+        Name
+        <span
+          class="tooltipByName_text"
+        >Sort by name</span>
+      </td>
+      <td (click)="sortByDescClick()">Description</td>
       <td>In Progress</td>
       <td>Done</td>
       <td>Other</td>
