@@ -15,8 +15,6 @@ export class TodosApiService {
   todosData: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   private todosURL = environment.API  + '/todos';
-  private completedTodosURL = environment.API + '/todos/completed';
-  private inProgressTodosURL = environment.API + '/todos/progress';
 
   constructor(private http: HttpClient) { }
 
@@ -34,14 +32,6 @@ export class TodosApiService {
     return this.http.get(this.todosURL + endPoints);
   }
 
-  getCompletedTodos(): Observable<any> {
-    return this.http.get(this.completedTodosURL);
-  }
-
-  getInProgressTodos(): Observable<any> {
-    return this.http.get(this.inProgressTodosURL);
-  }
-
   postTodos(todo): Observable<any> {
     return this.http.post(this.todosURL, todo);
   }
@@ -50,7 +40,7 @@ export class TodosApiService {
       const endPoints = `/${todo.id}`;
       const {data} = await this.http.delete<any>(this.todosURL + endPoints).toPromise();
 
-      const todos = this.todosData.getValue().todos.filter((todoData) => todoData.id !== todo.id);
+      const todos = this.todosData.getValue().result.filter((todoData) => todoData.id !== todo.id);
 
       this.todosData.next( {
         ...this.todosData.getValue(),

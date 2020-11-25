@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private loginURL = environment.API  + '/login';
+  private loginURL = environment.API  + '/users/login';
 
 
   constructor(private http: HttpClient, private router: Router) {  }

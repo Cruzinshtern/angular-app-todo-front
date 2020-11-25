@@ -26,10 +26,6 @@ export class TodoItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onDelete(todo): void {
-    this.api.deleteTodo(todo);
-  }
-
   changeProgStatus(todo): void {
     this.api.editTodo(todo.id, {
       isInProgress: !todo.isInProgress
@@ -55,4 +51,8 @@ export class TodoItemComponent implements OnInit {
  onClick(): void {
    this.todoListModalService.openModal(this.todo.id);
  }
+
+  onDelete(todo): void {
+    this.api.deleteTodo(todo);
+  }
 }

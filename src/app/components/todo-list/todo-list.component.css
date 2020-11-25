@@ -74,15 +74,19 @@
   cursor: pointer;
 }
 
-.tooltipByName_text {
-  visibility: hidden;
-  position: absolute;
-  background-color: #e8e8e8;
-  opacity: 0.7;
+.sortByDesc_button:hover {
+  cursor: pointer;
 }
 
-.sortByName_button:hover .tooltipByName_text {
-  visibility: visible;
-  position: absolute;
-  top: 50%;
-}
+/*.tooltipByName_text {*/
+/*  visibility: hidden;*/
+/*  position: absolute;*/
+/*  background-color: #e8e8e8;*/
+/*  opacity: 0.7;*/
+/*}*/
+
+/*.sortByName_button:hover .tooltipByName_text {*/
+/*  visibility: visible;*/
+/*  position: absolute;*/
+/*  top: 50%;*/
+/*}*/

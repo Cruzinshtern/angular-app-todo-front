@@ -1,16 +1,18 @@
-<table>
-  <tr>
-    <td>
-      <button *ngIf="prevIsActive" (click)="prevPage()">Previous</button>
-    </td>
-    <td>
-      {{this.page+1}}
-    </td>
-    <td>
-      <button *ngIf="nextIsActive" (click)="nextPage()">Next</button>
-    </td>
-  </tr>
-</table>
+<div class="user_list_component">
+  <table class="page_toggle">
+    <tr>
+      <td>
+        <button *ngIf="prevIsActive" (click)="prevPage()">Previous</button>
+      </td>
+      <td>
+        Page: {{this.page+1}}
+      </td>
+      <td>
+        <button *ngIf="nextIsActive" (click)="nextPage()">Next</button>
+      </td>
+    </tr>
+  </table>
+</div>
 <app-user-item
   *ngFor="let user of userList"
   [user] = "user"

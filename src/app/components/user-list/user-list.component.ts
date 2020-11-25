@@ -40,7 +40,10 @@ export class UserListComponent implements OnInit {
         }
         const totalPages = data.data.totalPages;
         const currentPage = data.data.currentPage;
-        if (currentPage === 0) {
+        if (totalPages === 1) {
+          this.prevIsActive = false;
+          this.nextIsActive = false;
+        } else if (currentPage === 0) {
           this.prevIsActive = false;
           this.nextIsActive = true;
         } else if (currentPage + 1 === totalPages) {

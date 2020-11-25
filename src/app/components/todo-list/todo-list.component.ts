@@ -50,7 +50,10 @@ export class TodoListComponent implements OnInit {
       this.userName = data.authUserInfo.name;
       const totalPages = data.data.totalPages;
       const currentPage = data.data.currentPage;
-      if (currentPage === 0) {
+      if (totalPages === 1) {
+        this.prevIsActive = false;
+        this.nextIsActive = false;
+      } else if (currentPage === 0) {
         this.prevIsActive = false;
         this.nextIsActive = true;
       } else if (currentPage + 1 === totalPages) {
@@ -96,22 +99,4 @@ export class TodoListComponent implements OnInit {
     this.getAllPaginatedTodos();
   }
 
-  sortByStatus(): void {
-    const statusFormData = this.sortForm.getRawValue();
-    console.log('statusData', statusFormData);
-    if (statusFormData.status === 'In progress') {
-      this.api.getInProgressTodos().subscribe(
-        data => {
-          this.todos = data;
-        }
-      );
-    } else {
-      this.api.getCompletedTodos().subscribe(
-        data => {
-          console.log(data);
-          this.todos = data;
-        }
-      );
-    }
-  }
 }

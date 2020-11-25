@@ -1,3 +1,15 @@
+.user_list_component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page_toggle td {
+  width: 70px;
+  text-align: center;
+}
+
+
 .denied {
   text-align: center;
   font-weight: bolder;

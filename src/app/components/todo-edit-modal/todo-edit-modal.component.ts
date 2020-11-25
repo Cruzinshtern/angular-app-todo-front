@@ -41,14 +41,12 @@ export class TodoEditModalComponent implements OnInit {
     this.todoListModalService.closeModal();
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const editedTodo = this.editableTodoForm.getRawValue();
-    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@', editedTodo);
     this.api.editTodo(this.todoListModalService.todoId, {
       name: this.editableTodoForm.value.name,
       description: this.editableTodoForm.value.description
-    });
-    console.log('MODALDATA', editedTodo);
+    }).subscribe();
     this.todoListModalService.closeModal();
   }
 }
