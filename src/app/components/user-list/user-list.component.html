@@ -1,5 +1,5 @@
 <div class="user_list_component">
-  <table class="page_toggle">
+  <table class="page_toggle" *ngIf="isAdmin">
     <tr>
       <td>
         <button *ngIf="prevIsActive" (click)="prevPage()">Previous</button>

@@ -12,7 +12,6 @@ export class UserListComponent implements OnInit {
   userList: User[] = [];
   isAdmin: boolean;
   denied: string;
-
   page = 0;
   pageSize = 3;
   prevIsActive: boolean;
@@ -37,27 +36,31 @@ export class UserListComponent implements OnInit {
           this.denied = data.status;
         } else {
           this.userList = data.data.users;
-        }
-        const totalPages = data.data.totalPages;
-        const currentPage = data.data.currentPage;
-        if (totalPages === 1) {
-          this.prevIsActive = false;
-          this.nextIsActive = false;
-        } else if (currentPage === 0) {
-          this.prevIsActive = false;
-          this.nextIsActive = true;
-        } else if (currentPage + 1 === totalPages) {
-          this.prevIsActive = true;
-          this.nextIsActive = false;
-        } else {
-          this.prevIsActive = true;
-          this.nextIsActive = true;
-        }
+          const totalPages = data.data.totalPages;
+          const currentPage = data.data.currentPage;
+          if (totalPages === 1) {
+            this.prevIsActive = false;
+            this.nextIsActive = false;
+          } else if (currentPage === 0) {
+            this.prevIsActive = false;
+            this.nextIsActive = true;
+          } else if (currentPage + 1 === totalPages) {
+            this.prevIsActive = true;
+            this.nextIsActive = false;
+          } else {
+            this.prevIsActive = true;
+            this.nextIsActive = true;
+        }}
       }
     );
     this.api.usersData.subscribe(
       data => {
-        this.userList = data.users;
+        if (!data) {
+          this.userList = [];
+        } else {
+          this.userList = data.users;
+        }
+
       }
     );
   }
