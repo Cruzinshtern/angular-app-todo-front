@@ -35,7 +35,7 @@ export class UserListComponent implements OnInit {
         if (!data.data) {
           this.denied = data.status;
         } else {
-          this.userList = data.data.users;
+          this.userList = data.data.result;
           const totalPages = data.data.totalPages;
           const currentPage = data.data.currentPage;
           if (totalPages === 1) {
