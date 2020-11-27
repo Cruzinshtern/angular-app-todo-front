@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from '../../classes/User';
-import { TodoListModalService } from '../../services/todo-list-modal.service';
+import { ModalService } from '../../services/modal.service';
 import {TodosApiService} from '../../services/todos-api.service';
 import {UsersApiService} from '../../services/users-api.service';
 
@@ -15,7 +15,7 @@ export class UserItemComponent implements OnInit {
   @Input() isAdmin;
   @Output() displayModalOpen: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(public todoListModalService: TodoListModalService,
+  constructor(public todoListModalService: ModalService,
               private api: UsersApiService
   ) { }
 

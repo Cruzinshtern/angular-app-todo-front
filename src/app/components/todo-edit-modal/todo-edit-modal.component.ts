@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoListModalService } from '../../services/todo-list-modal.service';
+import { ModalService } from '../../services/modal.service';
 import { TodosApiService } from '../../services/todos-api.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
@@ -14,7 +14,7 @@ export class TodoEditModalComponent implements OnInit {
   editableTodoForm: FormGroup;
 
   constructor(
-    public todoListModalService: TodoListModalService,
+    public todoListModalService: ModalService,
     private api: TodosApiService,
     private fb: FormBuilder
   ) { }

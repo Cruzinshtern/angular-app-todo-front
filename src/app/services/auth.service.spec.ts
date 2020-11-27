@@ -28,4 +28,20 @@ describe('AuthService', () => {
     expect(service.isLoggedIn).toBeFalsy();
   });
 
+  it('should show logged out', () => {
+    expect(service.isLoggedOut).toBeTruthy();
+  });
+
+  it('get the token', () => {
+    expect(service.getToken).toBeTruthy();
+  });
+
+  it('login user', () => {
+    expect(service.loginUser).toBeTruthy();
+  });
+
+  it('logout user', () => {
+    expect(service.logoutUser).toBeTruthy();
+  });
+
 });

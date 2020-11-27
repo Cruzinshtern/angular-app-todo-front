@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from '../../classes/Todo';
 import { HttpClient } from '@angular/common/http';
 import { TodosApiService } from '../../services/todos-api.service';
-import { TodoListModalService } from '../../services/todo-list-modal.service';
+import { ModalService } from '../../services/modal.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class TodoItemComponent implements OnInit {
 
   constructor(
     private api: TodosApiService,
-    private todoListModalService: TodoListModalService
+    private todoListModalService: ModalService
   ) { }
 
   ngOnInit(): void {

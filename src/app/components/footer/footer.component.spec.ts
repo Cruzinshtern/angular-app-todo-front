@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
+import {By} from 'protractor';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -22,7 +23,9 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should show in console', () => {
-    expect(component.onClick).toMatch('Clicked', 'fail');
+
+  it('should have text HELLO', () => {
+    const div = fixture.nativeElement.querySelector('div');
+    expect(div.textContent).toContain('Hello');
   });
 });
