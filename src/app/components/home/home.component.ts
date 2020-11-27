@@ -13,7 +13,10 @@ export class HomeComponent implements OnInit {
   loggedUser: string;
   params;
 
-  constructor(public auth: AuthService, private api: UsersApiService) { }
+  constructor(
+    public auth: AuthService,
+    private api: UsersApiService
+  ) { }
 
   ngOnInit(): void {
     this.api.getUsers(this.params).subscribe(

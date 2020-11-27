@@ -22,4 +22,7 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should show in console', () => {
+    expect(component.onClick).toMatch('Clicked', 'fail');
+  });
 });

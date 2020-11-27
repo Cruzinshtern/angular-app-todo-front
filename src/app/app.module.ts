@@ -10,7 +10,6 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { HomeComponent } from './components/home/home.component';
-import { TodosApiService } from './services/todos-api.service';
 import { ParamInterceptor } from './api.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -20,6 +19,9 @@ import { UserItemComponent } from './components/user-item/user-item.component';
 import { UserModalComponent } from './components/user-modal/user-modal.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TodosApiService } from './services/todos-api.service';
+import { UsersApiService } from './services/users-api.service';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgxPaginationModule
   ],
   providers: [
-    TodosApiService, {
+    TodosApiService,
+    UsersApiService,
+    AuthService, {
     provide: HTTP_INTERCEPTORS,
     useClass: ParamInterceptor,
     multi: true

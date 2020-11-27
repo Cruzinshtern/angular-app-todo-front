@@ -18,7 +18,6 @@ export class TodoItemComponent implements OnInit {
   @Output() displayModalOpen: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
-    private http: HttpClient,
     private api: TodosApiService,
     private todoListModalService: TodoListModalService
   ) { }
