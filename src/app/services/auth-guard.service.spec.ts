@@ -1,16 +1,20 @@
 import { AuthGuardService } from './auth-guard.service';
-import { TestBed } from '@angular/core/testing';
+import {fakeAsync, TestBed, tick} from '@angular/core/testing';
 import { AuthService } from './auth.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthGuardService', () => {
   let service: AuthGuardService;
-  let authServiceStub: Partial<AuthService>;
+  let authServiceStub = {isLoggedOut: true};
+  const router = {
+    navigate: jasmine.createSpy('navigate')
+  };
 
   beforeEach(() => {
-    authServiceStub = {
-      isLoggedIn: true
-    };
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
       providers: [
         {provide: AuthGuardService, useValue: AuthGuardService},
         {provide: AuthService, useValue: authServiceStub}
@@ -24,7 +28,10 @@ describe('AuthGuardService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('allow to navigate', () => {
-   expect(service.canActivate).toBeFalsy();
-  });
+  // it('allow to navigate', fakeAsync(() => {
+  //   tick();
+  //   if (authServiceStub.isLoggedOut) {
+  //     expect(router.navigate).toHaveBeenCalledWith(['login']);
+  //   }
+  // }));
 });

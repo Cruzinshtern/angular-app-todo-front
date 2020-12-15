@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserListComponent } from './user-list.component';
 import { AuthService } from '../../services/auth.service';
-import { HttpClient, HttpHandler } from '@angular/common/http';
 import { UsersApiService } from '../../services/users-api.service';
 import { FormBuilder } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -17,10 +17,9 @@ describe('UserListComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ UserListComponent ],
+      imports: [HttpClientTestingModule],
       providers: [
         {provide: AuthService, useValue: authServiceStub},
-        {provide: HttpClient},
-        {provide: HttpHandler},
         {provide: UsersApiService},
         {provide: FormBuilder}
       ]

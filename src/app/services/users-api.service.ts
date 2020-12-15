@@ -13,8 +13,8 @@ export class UsersApiService {
   usersData: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
 
-  private usersURL = environment.API  +  '/users';
-  private usersRegURL = environment.API  +  '/users/registration';
+  usersURL = environment.API  +  '/users';
+  usersRegURL = environment.API  +  '/users/registration';
 
   constructor(private http: HttpClient) { }
 
@@ -38,13 +38,14 @@ ________________________________________________________________________________
 
   async deleteUser(user): Promise<void> {
     const endPoints = `/${user.id}`;
-    const {data} = await this.http.delete<any>(this.usersURL + endPoints).toPromise();
-    console.log('DATA', data);
-    const users = this.usersData.getValue().result.filter((userData) => userData.id !== user.id);
+    const res = await this.http.delete<any>(this.usersURL + endPoints).toPromise();
+    const {data} = res;
+    const usersData = this.usersData.getValue();
+    const users = usersData.result.filter((userData) => userData.id !== user.id);
 
     this.usersData.next({
-      ...this.usersData.getValue(),
-      users
+      ...usersData,
+      result: users
     });
   }
 

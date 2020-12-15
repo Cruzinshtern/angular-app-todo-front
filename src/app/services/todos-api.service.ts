@@ -14,7 +14,7 @@ export class TodosApiService {
 
   todosData: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
-  private todosURL = environment.API  + '/todos';
+  todosURL = environment.API  + '/todos';
 
   constructor(private http: HttpClient) { }
 
@@ -38,13 +38,14 @@ export class TodosApiService {
 
   async deleteTodo(todo): Promise<void> {
       const endPoints = `/${todo.id}`;
-      const {data} = await this.http.delete<any>(this.todosURL + endPoints).toPromise();
-
-      const todos = this.todosData.getValue().result.filter((todoData) => todoData.id !== todo.id);
+      const res = await this.http.delete<any>(this.todosURL + endPoints).toPromise();
+      const {data} = res;
+      const todosData = this.todosData.getValue();
+      const todos = todosData.result.filter((todoData) => todoData.id !== todo.id);
 
       this.todosData.next( {
-        ...this.todosData.getValue(),
-        todos
+        ...todosData,
+        result: todos
       });
   }
 

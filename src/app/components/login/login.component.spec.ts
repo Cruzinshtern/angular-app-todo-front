@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TodoFormComponent', () => {
   let component: LoginComponent;
@@ -12,16 +13,17 @@ describe('TodoFormComponent', () => {
 
   beforeEach(async () => {
     authServiceStub = {
-      isLoggedIn: true,
+      isLoggedIn: true
     };
 
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
       declarations: [ LoginComponent ],
       providers: [
         {provide: AuthService, useValue: authServiceStub},
-        {provide: HttpClient},
-        {provide: HttpHandler},
         {provide: FormBuilder},
       ]
     });

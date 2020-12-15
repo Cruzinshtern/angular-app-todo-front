@@ -31,6 +31,7 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { UsersApiService } from '../../services/users-api.service';
 import { FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -43,12 +44,13 @@ describe('RegistrationComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
       declarations: [ RegistrationComponent ],
       providers: [
         {provide: AuthService, useValue: authServiceStub},
-        {provide: HttpClient},
-        {provide: HttpHandler},
         {provide: UsersApiService},
         {provide: FormBuilder}
       ]

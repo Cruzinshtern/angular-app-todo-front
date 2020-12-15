@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserModalComponent } from './user-modal.component';
 import { AuthService } from '../../services/auth.service';
-import { HttpClient, HttpHandler } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UserModalComponent', () => {
   let component: UserModalComponent;
@@ -16,12 +16,13 @@ describe('UserModalComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
       declarations: [ UserModalComponent ],
       providers: [
         {provide: AuthService, useValue: authServiceStub},
-        {provide: HttpClient},
-        {provide: HttpHandler},
         {provide: FormBuilder},
       ]
     });

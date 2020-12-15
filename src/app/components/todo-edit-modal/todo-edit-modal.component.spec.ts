@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodoEditModalComponent } from './todo-edit-modal.component';
 import { AuthService } from '../../services/auth.service';
-import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TodosApiService } from '../../services/todos-api.service';
 import { FormBuilder } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TodoEditModalComponent', () => {
   let component: TodoEditModalComponent;
@@ -17,10 +17,9 @@ describe('TodoEditModalComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ TodoEditModalComponent ],
+      imports: [HttpClientTestingModule],
       providers: [
         {provide: AuthService, useValue: authServiceStub},
-        {provide: HttpClient},
-        {provide: HttpHandler},
         {provide: TodosApiService},
         {provide: FormBuilder}
       ]

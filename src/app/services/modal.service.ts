@@ -27,7 +27,7 @@ export class ModalService {
     this.userModalId = id;
     this.isModalUserOpen.next(!this.isModalUserOpen.getValue());
   }
-  closeUserModal() {
+  closeUserModal(): void {
     this.isModalUserOpen.next(!this.isModalUserOpen.getValue());
   }
 }

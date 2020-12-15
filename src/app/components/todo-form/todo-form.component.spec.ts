@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodoFormComponent } from './todo-form.component';
 import { AuthService } from '../../services/auth.service';
-import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TodosApiService } from '../../services/todos-api.service';
 import { FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TodoFormComponent', () => {
   let component: TodoFormComponent;
@@ -17,12 +17,13 @@ describe('TodoFormComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule
+      ],
       declarations: [ TodoFormComponent ],
       providers: [
         {provide: AuthService, useValue: authServiceStub},
-        {provide: HttpClient},
-        {provide: HttpHandler},
         {provide: TodosApiService},
         {provide: FormBuilder},
       ]

@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
-import {AuthService} from '../../services/auth.service';
-import {HttpClient, HttpHandler} from '@angular/common/http';
-import {By} from '@angular/platform-browser';
+import { AuthService } from '../../services/auth.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -16,10 +15,9 @@ describe('HomeComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
+      imports: [HttpClientTestingModule],
       providers: [
         {provide: AuthService, useValue: authServiceStub},
-        {provide: HttpClient},
-        {provide: HttpHandler}
       ]
     });
     fixture = TestBed.createComponent(HomeComponent);
